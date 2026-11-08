@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Possessive Adjectives & Pronouns — ESL A1</title>
+<style>
+  :root{
+    --navy:#0b1f3a; --sky:#1ea7e8; --amber:#f5a623;
+    --green:#28c76f; --red:#ea5455;
+    --ink:#122036; --paper:#f4f8fc; --card:#fff; --muted:#6b7c93;
+    --radius:14px; --shadow:0 6px 18px rgba(11,31,58,.10);
+    font-family:'Segoe UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);}
+  body{min-height:100vh;}
+
+  header.topbar{background:linear-gradient(135deg,var(--navy) 0%,#122a4d 100%);color:#fff;padding:16px 18px 12px;position:sticky;top:0;z-index:50;box-shadow:0 4px 16px rgba(0,0,0,.22);}
+  .topbar-inner{max-width:1000px;margin:0 auto;}
+  .badge{display:inline-block;background:var(--sky);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:1px;padding:4px 11px;border-radius:20px;text-transform:uppercase;margin-bottom:8px;}
+  header.topbar h1{margin:0 0 4px;font-size:clamp(18px,3.4vw,24px);}
+  header.topbar p{margin:0 0 12px;color:#b9c8de;font-size:12.5px;line-height:1.5;}
+  nav.phasenav{display:flex;gap:6px;flex-wrap:wrap;}
+  nav.phasenav button{flex:1 1 100px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#dce6f5;padding:8px 6px;border-radius:9px;font-size:11px;font-weight:700;cursor:pointer;transition:.2s;text-align:center;}
+  nav.phasenav button.active{background:var(--sky);border-color:var(--sky);color:#fff;}
+  nav.phasenav button:hover:not(.active){background:rgba(255,255,255,0.16);}
+  .progress-outer{height:6px;background:rgba(255,255,255,0.15);border-radius:6px;margin-top:10px;overflow:hidden;}
+  .progress-inner{height:100%;width:0%;background:linear-gradient(90deg,var(--sky),var(--amber));transition:width .4s ease;}
+
+  main{max-width:1000px;margin:0 auto;padding:26px 18px 70px;}
+  .phase{display:none;animation:fadeIn .4s ease;}
+  .phase.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+  .phase-title{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  .phase-title .bar{width:5px;height:24px;background:var(--sky);border-radius:3px;}
+  .phase-title h2{margin:0;font-size:clamp(18px,3vw,22px);}
+  .phase-sub{color:var(--muted);margin:0 0 20px;font-size:13.5px;max-width:720px;line-height:1.5;}
+
+  .nav-btn{background:var(--navy);color:#fff;border:none;padding:10px 18px;border-radius:10px;font-weight:700;cursor:pointer;font-size:13px;transition:.15s;}
+  .nav-btn:hover{background:var(--sky);}
+  .nav-btn.ghost{background:#eef4fb;color:var(--navy);}
+  .nav-btn.ghost:hover{background:#dfeaf6;}
+  .nav-btn:disabled{opacity:.35;cursor:not-allowed;}
+  .speak-btn{background:var(--sky);border:none;color:#fff;width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;flex-shrink:0;transition:.15s;}
+  .speak-btn:hover{background:var(--navy);}
+  .speak-btn.big{width:80px;height:80px;font-size:32px;box-shadow:0 6px 18px rgba(30,167,232,.35);}
+
+  .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px 22px;border:1px solid #e2ebf3;}
+
+  .grammar-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;border:1px solid #e2ebf3;margin-bottom:22px;}
+  .grammar-card h3{margin:0 0 4px;font-size:16px;color:var(--navy);}
+  .grammar-card p{margin:0 0 14px;font-size:12.5px;color:var(--muted);}
+  table.grammar{width:100%;border-collapse:collapse;font-size:13.5px;}
+  table.grammar th{background:var(--navy);color:#fff;padding:9px 10px;text-align:left;font-size:11.5px;letter-spacing:.5px;text-transform:uppercase;}
+  table.grammar th:first-child{border-top-left-radius:8px;}
+  table.grammar th:last-child{border-top-right-radius:8px;}
+  table.grammar td{padding:8px 10px;border-bottom:1px solid #eef4fb;}
+  table.grammar tr:nth-child(even) td{background:#f7fafd;}
+  table.grammar td:nth-child(2){color:var(--sky);font-weight:700;}
+  table.grammar td:nth-child(3){color:var(--amber);font-weight:700;}
+
+  .word-dots{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;}
+  .word-dot{width:34px;height:34px;border-radius:50%;background:#e2ebf3;color:var(--muted);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;cursor:pointer;border:2px solid transparent;}
+  .word-dot.active{background:var(--sky);color:#fff;border-color:var(--sky);}
+  .word-dot.done{background:var(--green);color:#fff;}
+  .stepper-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 22px;display:flex;flex-direction:column;align-items:center;text-align:center;border:1px solid #e2ebf3;}
+  .step-tags{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;justify-content:center;}
+  .step-tag{padding:5px 12px;border-radius:20px;font-size:10.5px;font-weight:800;letter-spacing:.5px;background:#eef4fb;color:var(--muted);}
+  .step-tag.on{background:var(--sky);color:#fff;}
+  .stepper-image{width:200px;height:200px;background:#eaf4fc;border-radius:18px;margin-bottom:16px;overflow:hidden;border:1px solid #e2ebf3;}
+  .stepper-image svg{width:100%;height:100%;display:block;}
+  .stepper-hint{font-size:11px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+  .stepper-text{font-size:clamp(17px,3vw,24px);font-weight:800;color:var(--navy);margin-bottom:16px;min-height:36px;line-height:1.35;}
+  .stepper-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;}
+
+  .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0;}
+  .match-col{display:flex;flex-direction:column;gap:8px;}
+  .match-item{background:#f7fafd;border:2px solid #e2ebf3;border-radius:11px;padding:13px 12px;cursor:pointer;transition:.15s;font-weight:700;font-size:14px;text-align:center;}
+  .match-item:hover{border-color:var(--sky);}
+  .match-item.selected{background:var(--sky);color:#fff;border-color:var(--sky);}
+  .match-item.matched{background:#e8f9ee;border-color:var(--green);color:#1c8a4d;cursor:default;}
+  .match-item.wrong-match{background:#fdecec;border-color:var(--red);color:#c53030;animation:shake .4s ease;}
+
+  .listen-panel{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px 22px;text-align:center;border:1px solid #e2ebf3;}
+  .lc-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;font-size:12.5px;font-weight:800;color:var(--muted);}
+  .score-box{display:flex;gap:12px;background:#eef4fb;padding:6px 14px;border-radius:16px;font-size:13px;}
+  .score-box .good{color:var(--green);}
+  .score-box .bad{color:var(--red);}
+  .lc-instruction{font-size:14px;color:var(--navy);font-weight:700;margin-bottom:14px;}
+  .lc-images{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px;}
+  .lc-img-card{background:#f7fafd;border:3px solid #e2ebf3;border-radius:14px;padding:6px 6px 32px 6px;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;aspect-ratio:1.1;}
+  .lc-img-card svg{width:100%;height:100%;max-height:120px;}
+  .lc-img-card:hover{border-color:var(--sky);transform:scale(1.03);}
+  .lc-img-card.correct{border-color:var(--green);background:#e8f9ee;animation:pop .4s ease;}
+  .lc-img-card.wrong{border-color:var(--red);background:#fdecec;animation:shake .4s ease;}
+  .lc-img-label{position:absolute;bottom:0;left:0;right:0;background:var(--navy);color:#fff;font-size:11px;font-weight:800;padding:6px;text-align:center;border-bottom-left-radius:11px;border-bottom-right-radius:11px;}
+  .lc-img-card.correct .lc-img-label{background:var(--green);}
+  .lc-img-card.wrong .lc-img-label{background:var(--red);}
+
+  .fb-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px;border:1px solid #e2ebf3;}
+  .fb-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;}
+  .fb-num{font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.5px;}
+  .fb-score{font-size:12.5px;font-weight:800;color:var(--green);}
+  .fb-sentence{font-size:17px;font-weight:700;color:var(--ink);line-height:1.6;margin-bottom:20px;text-align:center;}
+  .fb-sentence .gap{display:inline-block;min-width:90px;border-bottom:3px solid var(--amber);text-align:center;color:var(--amber);}
+  .fb-sentence .hint{color:var(--muted);font-size:13px;font-weight:600;margin-left:4px;}
+  .fb-choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;}
+  .fb-choice{background:#f7fafd;border:2px solid #e2ebf3;border-radius:11px;padding:12px;font-weight:700;font-size:14px;cursor:pointer;text-align:center;transition:.15s;}
+  .fb-choice:hover{border-color:var(--sky);}
+  .fb-choice.correct{background:#e8f9ee;border-color:var(--green);color:#1c8a4d;animation:pop .3s ease;}
+  .fb-choice.wrong{background:#fdecec;border-color:var(--red);color:#c53030;animation:shake .3s ease;}
+
+  .feedback{margin-top:16px;font-weight:800;font-size:14px;min-height:22px;text-align:center;}
+  .feedback.ok{color:var(--green);}
+  .feedback.bad{color:var(--red);}
+  .progress-bar{height:10px;background:#e2ebf3;border-radius:8px;overflow:hidden;margin-bottom:20px;}
+  .progress-bar-inner{height:100%;width:0%;background:linear-gradient(90deg,var(--sky),var(--green));transition:.4s;}
+
+  .read-passage{background:#eef4fb;border-left:5px solid var(--sky);border-radius:10px;padding:18px 20px;margin-bottom:22px;font-size:14.5px;line-height:1.7;color:var(--ink);}
+  .read-passage strong{color:var(--navy);}
+  .read-q-text{font-weight:800;font-size:15px;color:var(--navy);margin-bottom:12px;}
+  .read-opts{display:grid;gap:8px;}
+  .read-opt{background:#f7fafd;border:2px solid #e2ebf3;border-radius:10px;padding:11px 14px;cursor:pointer;font-size:13.5px;font-weight:600;transition:.15s;}
+  .read-opt:hover{border-color:var(--sky);background:#eef7fd;}
+  .read-opt.correct{background:#e8f9ee;border-color:var(--green);color:#1c8a4d;}
+  .read-opt.wrong{background:#fdecec;border-color:var(--red);color:#c53030;animation:shake .3s ease;}
+  .read-opt.disabled{pointer-events:none;opacity:.85;}
+
+  .final-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:34px 24px;border:1px solid #e2ebf3;text-align:center;}
+  .final-card h3{font-size:22px;color:var(--navy);margin:0 0 4px;}
+  .final-score-big{font-size:60px;font-weight:900;color:var(--sky);margin:8px 0 4px;}
+  .final-score-sub{color:var(--muted);font-size:13px;margin-bottom:22px;}
+  .final-breakdown{display:flex;flex-direction:column;gap:12px;text-align:left;margin-bottom:20px;}
+  .fb-row{display:flex;align-items:center;gap:12px;}
+  .fb-row .fb-label{width:130px;font-size:12.5px;font-weight:700;color:var(--ink);flex-shrink:0;}
+  .fb-row .fb-bar-outer{flex:1;height:10px;background:#e2ebf3;border-radius:6px;overflow:hidden;}
+  .fb-row .fb-bar-inner{height:100%;background:linear-gradient(90deg,var(--sky),var(--green));border-radius:6px;}
+  .fb-row .fb-val{width:52px;text-align:right;font-size:12px;font-weight:800;color:var(--muted);}
+  .final-message{background:#eef4fb;border-left:5px solid var(--sky);border-radius:10px;padding:16px;margin:20px 0;text-align:left;font-size:14px;color:var(--navy);font-weight:600;}
+  .final-message.pass{background:#e8f9ee;border-color:var(--green);}
+  .final-message.fail{background:#fdecec;border-color:var(--red);}
+  .restart-btn{background:var(--amber);border:none;color:#3a2600;padding:12px 26px;border-radius:10px;font-weight:800;cursor:pointer;font-size:14px;margin-top:8px;}
+
+  @keyframes pop{0%{transform:scale(1);}50%{transform:scale(1.08);}100%{transform:scale(1);}}
+  @keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-8px);}75%{transform:translateX(8px);}}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(30,167,232,.5);}70%{box-shadow:0 0 0 16px rgba(30,167,232,0);}100%{box-shadow:0 0 0 0 rgba(30,167,232,0);}}
+  .pulsing{animation:pulse 1.4s infinite;}
+
+  footer.bottom{text-align:center;color:var(--muted);font-size:12px;padding:20px;}
+
+  @media(max-width:640px){
+    .lc-images{grid-template-columns:1fr;}
+    .match-grid{grid-template-columns:1fr;}
+    .match-col{flex-direction:row;flex-wrap:wrap;}
+    .match-item{flex:1 1 45%;}
+    .stepper-image{width:160px;height:160px;}
+    .fb-choices{grid-template-columns:1fr 1fr;}
+    .fb-row{flex-wrap:wrap;}
+    .fb-row .fb-label{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <span class="badge">English · Level A1</span>
+    <h1>Possessive Adjectives &amp; Possessive Pronouns</h1>
+    <p>my / mine · your / yours · his / his · her / hers · its / its · our / ours · their / theirs</p>
+    <nav class="phasenav" id="phaseNav">
+      <button class="phase-btn active" data-phase="1">1 · Learn</button>
+      <button class="phase-btn" data-phase="2">2 · Match</button>
+      <button class="phase-btn" data-phase="3">3 · Listen</button>
+      <button class="phase-btn" data-phase="4">4 · Fill</button>
+      <button class="phase-btn" data-phase="5">5 · Reading</button>
+      <button class="phase-btn" data-phase="6">6 · Final</button>
+    </nav>
+    <div class="progress-outer"><div class="progress-inner" id="topProgress"></div></div>
+  </div>
+</header>
+
+<main>
+
+  <!-- SECTION 1: LEARN -->
+  <section class="phase active" id="phase1">
+    <div class="phase-title"><span class="bar"></span><h2>Learn</h2></div>
+    <p class="phase-sub">Study the table, then use the stepper to learn each possessive with everyday vocabulary.</p>
+
+    <div class="grammar-card">
+      <h3>📘 Grammar reference</h3>
+      <p>An <strong>adjective</strong> goes before a noun (<em>my book</em>). A <strong>pronoun</strong> goes alone, without a noun (<em>mine</em>).</p>
+      <table class="grammar">
+        <thead><tr><th>Subject</th><th>Adjective + noun</th><th>Pronoun (alone)</th></tr></thead>
+        <tbody>
+          <tr><td>I</td><td>my book</td><td>mine</td></tr>
+          <tr><td>you</td><td>your pen</td><td>yours</td></tr>
+          <tr><td>he</td><td>his car</td><td>his</td></tr>
+          <tr><td>she</td><td>her bag</td><td>hers</td></tr>
+          <tr><td>it</td><td>its tail</td><td>its</td></tr>
+          <tr><td>we</td><td>our house</td><td>ours</td></tr>
+          <tr><td>they</td><td>their toys</td><td>theirs</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="word-dots" id="wordDots"></div>
+
+    <div class="stepper-card">
+      <div class="step-tags">
+        <div class="step-tag" id="tag1">1 · Adjective</div>
+        <div class="step-tag" id="tag2">2 · Sentence</div>
+        <div class="step-tag" id="tag3">3 · Pronoun</div>
+      </div>
+      <div class="stepper-image" id="stepImage"></div>
+      <div class="stepper-hint" id="stepHint">STEP 1 — POSSESSIVE ADJECTIVE</div>
+      <div class="stepper-text" id="stepText"></div>
+      <div class="stepper-controls">
+        <button class="nav-btn ghost" id="prevBtn">← Back</button>
+        <button class="speak-btn" id="speakBtn">🔊</button>
+        <button class="nav-btn" id="nextBtn">Next →</button>
+      </div>
+      <div class="feedback" id="stepFeedback">&nbsp;</div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: MATCH -->
+  <section class="phase" id="phase2">
+    <div class="phase-title"><span class="bar"></span><h2>Match</h2></div>
+    <p class="phase-sub">Click an <strong>adjective</strong> on the left, then its matching <strong>pronoun</strong> on the right.</p>
+    <div class="fb-card">
+      <div class="fb-top">
+        <div class="fb-num">MATCH THE PAIRS</div>
+        <div class="fb-score" id="matchScore">✅ 0 | ❌ 0</div>
+      </div>
+      <div class="match-grid">
+        <div class="match-col" id="matchAdj"></div>
+        <div class="match-col" id="matchPron"></div>
+      </div>
+      <div class="feedback" id="matchFeedback">&nbsp;</div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: LISTEN -->
+  <section class="phase" id="phase3">
+    <div class="phase-title"><span class="bar"></span><h2>Listen &amp; Click</h2></div>
+    <p class="phase-sub">Listen to the sentence and click the matching picture.</p>
+    <div class="listen-panel">
+      <div class="lc-header">
+        <span id="lcRoundLabel">ROUND 1 / 7</span>
+        <div class="score-box">
+          <span class="good">✅ <span id="lcCorrect">0</span></span>
+          <span class="bad">❌ <span id="lcWrong">0</span></span>
+        </div>
+      </div>
+      <div class="lc-instruction">🎧 Listen carefully</div>
+      <button class="speak-btn big pulsing" id="lcSpeakBtn">🔊</button>
+      <div class="lc-images" id="lcImages"></div>
+      <div class="feedback" id="lcFeedback">&nbsp;</div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: FILL -->
+  <section class="phase" id="phase4">
+    <div class="phase-title"><span class="bar"></span><h2>Fill the Blank</h2></div>
+    <p class="phase-sub">Complete each sentence with the correct possessive.</p>
+    <div class="progress-bar"><div class="progress-bar-inner" id="fbProgress"></div></div>
+    <div id="fbArea"></div>
+  </section>
+
+  <!-- SECTION 5: READING -->
+  <section class="phase" id="phase5">
+    <div class="phase-title"><span class="bar"></span><h2>Reading</h2></div>
+    <p class="phase-sub">Read the text and answer the questions.</p>
+    <div class="card" id="readArea"></div>
+  </section>
+
+  <!-- SECTION 6: FINAL -->
+  <section class="phase" id="phase6">
+    <div class="phase-title"><span class="bar"></span><h2>Final Score</h2></div>
+    <p class="phase-sub">Here is your overall result.</p>
+    <div class="final-card" id="finalArea"></div>
+  </section>
+
+</main>
+
+<footer class="bottom">📚 English A1 · <span style="color:var(--sky);font-weight:700;">Possessives</span></footer>
+
+<script>
+/* ============================================================
+   SVG ICONS — everyday objects
+============================================================ */
+const ICONS = {
+  book: `<svg viewBox="0 0 120 120"><rect width="120" height="120" fill="#eaf4fc"/><rect x="30" y="30" width="60" height="70" rx="4" fill="#1ea7e8" stroke="#0b1f3a" stroke-width="3"/><line x1="60" y1="30" x2="60" y2="100" stroke="#0b1f3a" stroke-width="2"/><line x1="40" y1="48" x2="55" y2="48" stroke="#fff" stroke-width="2"/><line x1="40" y1="60" x2="55" y2="60" stroke="#fff" stroke-width="2"/><line x1="40" y1="72" x2="55" y2="72" stroke="#fff" stroke-width="2"/><text x="60" y="115" text-anchor="middle" font-size="10" fill="#0b1f3a" font-weight="bold" font-family="sans-serif">BOOK</text></svg>`,
+  pen: `<svg viewBox="0 0 120 120"><rect width="120" height="120" fill="#eaf4fc"/><path d="M 30 100 L 40 70 L 80 30 L 90 40 L 50 80 Z" fill="#f5a623" stroke="#0b1f3a" stroke-width="3" stroke-linejoin="round"/><path d="M 40 70 L 50 80" stroke="#0b1f3a" stroke-width="2"/><circle cx="85" cy="35" r="3" fill="#0b1f3a"/><text x="60" y="115" text-anchor="middle" font-size="10" fill="#0b1f3a" font-weight="bold" font-family="sans-serif">PEN</text></svg>`,
+  car: `<svg viewBox="0 0 120 120"><rect width="120" height="120" fill="#eaf4fc"/><path d="M 20 70 L 30 50 L 90 50 L 100 70 L 100 85 L 20 85 Z" fill="#ea5455" stroke="#0b1f3a" stroke-width="3" stroke-linejoin="round"/><rect x="35" y="55" width="20" height="12" fill="#fff" stroke="#0b1f3a" stroke-width="2"/><rect x="65" y="55" width="20" height="12" fill="#fff" stroke="#0b1f3a" stroke-width="2"/><circle cx="35" cy="88" r="8" fill="#0b1f3a"/><circle cx="85" cy="88" r="8" fill="#0b1f3a"/><text x="60" y="115" text-anchor="middle" font-size="10" fill="#0b1f3a" font-weight="bold" font-family="sans-serif">CAR</text></svg>`,
+  bag: `<svg viewBox="0 0 120 120"><rect width="120" height="120" fill="#eaf4fc"/><path d="M 35 45 L 85 45 L 90 95 L 30 95 Z" fill="#28c76f" stroke="#0b1f3a" stroke-width="3" stroke-linejoin="round"/><path d="M 45 45 Q 45 25 60 25 Q 75 25 75 45" fill="none" stroke="#0b1f3a" stroke-width="3"/><text x="60" y="115" text-anchor="middle" font-size="10" fill="#0b1f3a" font-weight="bold" font-family="sans-serif">BAG</text></svg>`,
+  dog: `<svg viewBox="0 0 120 120"><rect width="120" height="120" fill="#eaf4fc"/><ellipse cx="60" cy="70" rx="30" ry="25" fill="#f5a623" stroke="#0b1f3a" stroke-width="3"/><circle cx="45" cy="45" r="8" fill="#f5a623" stroke="#0b1f3a" stroke-width="2"/><circle cx="75" cy="45" r="8" fill="#f5a623" stroke="#0b1f3a" stroke-width="2"/><circle cx="55" cy="65" r="3" fill="#0b1f3a"/><circle cx="65" cy="65" r="3" fill="#0b1f3a"/><ellipse cx="60" cy="75" rx="4" ry="3" fill="#0b1f3a"/><text x="60" y="115" text-anchor="middle" font-size="10" fill="#0b1f3a" font-weight="bold" font-family="sans-serif">DOG</text></svg>`,
+  house: `<svg viewBox="0 0 120 120"><rect width="120" height="120" fill="#eaf4fc"/><path d="M 25 60 L 60 30 L 95 60 L 95 100 L 25 100 Z" fill="#1ea7e8" stroke="#0b1f3a" stroke-width="3" stroke-linejoin="round"/><rect x="50" y="70" width="20" height="30" fill="#f5a623" stroke="#0b1f3a" stroke-width="2"/><rect x="32" y="68" width="12" height="12" fill="#fff" stroke="#0b1f3a" stroke-width="2"/><rect x="76" y="68" width="12" height="12" fill="#fff" stroke="#0b1f3a" stroke-width="2"/><text x="60" y="115" text-anchor="middle" font-size="10" fill="#0b1f3a" font-weight="bold" font-family="sans-serif">HOUSE</text></svg>`,
+  toys: `<svg viewBox="0 0 120 120"><rect width="120" height="120" fill="#eaf4fc"/><rect x="25" y="60" width="30" height="30" rx="3" fill="#ea5455" stroke="#0b1f3a" stroke-width="3"/><circle cx="80" cy="75" r="18" fill="#28c76f" stroke="#0b1f3a" stroke-width="3"/><rect x="50" y="30" width="20" height="20" rx="10" fill="#f5a623" stroke="#0b1f3a" stroke-width="3"/><text x="60" y="115" text-anchor="middle" font-size="10" fill="#0b1f3a" font-weight="bold" font-family="sans-serif">TOYS</text></svg>`
+};
+
+/* ============================================================
+   DATA — everyday ESL vocabulary
+============================================================ */
+const LESSONS = [
+  { adj:'my',    pron:'mine',   subject:'I',    svg:'book',
+    s1:'my book',   s2:'This is my book.',   s3:'The book is mine.' },
+  { adj:'your',  pron:'yours',  subject:'you',  svg:'pen',
+    s1:'your pen',  s2:'This is your pen.',  s3:'The pen is yours.' },
+  { adj:'his',   pron:'his',    subject:'he',   svg:'car',
+    s1:'his car',   s2:'This is his car.',   s3:'The car is his.' },
+  { adj:'her',   pron:'hers',   subject:'she',  svg:'bag',
+    s1:'her bag',   s2:'This is her bag.',   s3:'The bag is hers.' },
+  { adj:'its',   pron:'its',    subject:'it',   svg:'dog',
+    s1:'its tail',  s2:'The dog wags its tail.', s3:'The tail is its. (same form)' },
+  { adj:'our',   pron:'ours',   subject:'we',   svg:'house',
+    s1:'our house', s2:'This is our house.', s3:'The house is ours.' },
+  { adj:'their', pron:'theirs', subject:'they', svg:'toys',
+    s1:'their toys', s2:'These are their toys.', s3:'The toys are theirs.' }
+];
+
+const MATCH_PAIRS = [
+  { adj:'my',    pron:'mine'   },
+  { adj:'your',  pron:'yours'  },
+  { adj:'his',   pron:'his'    },
+  { adj:'her',   pron:'hers'   },
+  { adj:'its',   pron:'its'    },
+  { adj:'our',   pron:'ours'   },
+  { adj:'their', pron:'theirs' }
+];
+
+const LISTEN_ROUNDS = [
+  { audio:'This is my book.',          correct:'my book',   svg:'book',
+    options:['my book','your book','his book','her book'] },
+  { audio:'This is your pen.',         correct:'your pen',  svg:'pen',
+    options:['my pen','your pen','his pen','her pen'] },
+  { audio:'This is his car.',          correct:'his car',   svg:'car',
+    options:['my car','your car','his car','her car'] },
+  { audio:'This is her bag.',          correct:'her bag',   svg:'bag',
+    options:['his bag','her bag','my bag','your bag'] },
+  { audio:'This is our house.',        correct:'our house', svg:'house',
+    options:['our house','their house','my house','your house'] },
+  { audio:'These are their toys.',     correct:'their toys', svg:'toys',
+    options:['our toys','their toys','his toys','her toys'] },
+  { audio:'The dog wags its tail.',    correct:'its tail',  svg:'dog',
+    options:['its tail','our tail','their tail','his tail'] }
+];
+
+const FILL_BLANK = [
+  { before:'This is',                  after:'book.',           hint:'(I)',   answer:'my',     options:['my','your','his','her'] },
+  { before:'The book is',              after:'.',               hint:'(I)',   answer:'mine',   options:['my','mine','your','yours'] },
+  { before:'Show me',                  after:'pen.',            hint:'(you)', answer:'your',   options:['my','your','his','her'] },
+  { before:'The pen is',               after:'.',               hint:'(you)', answer:'yours',  options:['my','mine','your','yours'] },
+  { before:'He drives',                after:'car.',            hint:'(he)',  answer:'his',    options:['my','your','his','her'] },
+  { before:'The car is',               after:'.',               hint:'(he)',  answer:'his',    options:['my','mine','his','hers'] },
+  { before:'She opens',                after:'bag.',            hint:'(she)', answer:'her',    options:['my','your','his','her'] },
+  { before:'The bag is',               after:'.',               hint:'(she)', answer:'hers',   options:['my','mine','his','hers'] },
+  { before:'We live in',               after:'house.',          hint:'(we)',  answer:'our',    options:['my','our','their','his'] },
+  { before:'The house is',             after:'.',               hint:'(we)',  answer:'ours',   options:['mine','ours','yours','theirs'] },
+  { before:'The children play with',   after:'toys.',           hint:'(they)',answer:'their',  options:['my','their','our','his'] },
+  { before:'The toys are',             after:'.',               hint:'(they)',answer:'theirs', options:['ours','yours','theirs','hers'] }
+];
+
+const READING = {
+  passage: `This is Anna. This is <strong>her</strong> bag. The bag is <strong>hers</strong>. Anna has a brother. <strong>His</strong> name is Tom. This is <strong>his</strong> car. The car is <strong>his</strong>. Anna and Tom have a dog. The dog wags <strong>its</strong> tail. We are Anna and Tom's friends. This is <strong>our</strong> house. <strong>Our</strong> toys are in the garden. And our friends? <strong>Their</strong> toys are in the house. The toys are <strong>theirs</strong>.`,
+  questions: [
+    { q:'Whose bag is it?',                     options:['Anna\'s (her bag)','Tom\'s (his bag)','The dog\'s bag'],               answer:0 },
+    { q:'Whose car is it?',                     options:['Tom\'s (his car)','Anna\'s (her car)','Our car'],                      answer:0 },
+    { q:'What does the dog wag?',               options:['Its tail','Her tail','His tail'],                                     answer:0 },
+    { q:'Whose house is it?',                   options:['Our house (Anna and Tom\'s friends)','Tom\'s house','The dog\'s house'], answer:0 },
+    { q:'Whose toys are in the house?',         options:['Their toys (the friends\')','Our toys','Anna\'s toys'],               answer:0 }
+  ]
+};
+
+/* ============================================================
+   STATE
+============================================================ */
+let learnIndex = 0, learnStep = 1, lessonsDone = new Array(LESSONS.length).fill(false);
+let matchCorrect = 0, matchWrong = 0, matchSelected = null, matchDone = 0;
+let lcIndex = 0, lcCorrect = 0, lcWrong = 0, lcAnswered = false;
+let fbIndex = 0, fbScore = 0, fbWrong = 0;
+let readIndex = 0, readCorrect = 0, readWrong = 0, readAnswered = false;
+
+/* ============================================================
+   HELPERS
+============================================================ */
+function speak(text){
+  if(!('speechSynthesis' in window)) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-US'; u.rate = 0.8; u.pitch = 1;
+  const v = window.speechSynthesis.getVoices().find(v => v.lang && v.lang.startsWith('en'));
+  if(v) u.voice = v;
+  window.speechSynthesis.speak(u);
+}
+setTimeout(()=>{ if('speechSynthesis' in window) window.speechSynthesis.getVoices(); }, 400);
+
+function shuffle(arr){
+  const a = [...arr];
+  for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+
+function playDing(){
+  try{
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    [880, 1320].forEach((freq, i)=>{
+      const osc = ctx.createOscillator(), gain = ctx.createGain();
+      osc.type='sine'; osc.frequency.value=freq;
+      const s = ctx.currentTime + i*0.09;
+      gain.gain.setValueAtTime(0.0001, s);
+      gain.gain.exponentialRampToValueAtTime(0.2, s+0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, s+0.25);
+      osc.connect(gain).connect(ctx.destination); osc.start(s); osc.stop(s+0.28);
+    });
+  }catch(e){}
+}
+function playBuzz(){
+  try{
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator(), gain = ctx.createGain();
+    osc.type='sawtooth'; osc.frequency.value=130;
+    const s = ctx.currentTime;
+    gain.gain.setValueAtTime(0.0001, s);
+    gain.gain.exponentialRampToValueAtTime(0.15, s+0.03);
+    gain.gain.exponentialRampToValueAtTime(0.0001, s+0.35);
+    osc.connect(gain).connect(ctx.destination); osc.start(s); osc.stop(s+0.38);
+  }catch(e){}
+}
+
+/* ============================================================
+   NAV
+============================================================ */
+const phaseBtns = document.querySelectorAll('.phase-btn');
+const phases = document.querySelectorAll('.phase');
+function goToPhase(n){
+  phases.forEach(p => p.classList.remove('active'));
+  phaseBtns.forEach(b => b.classList.remove('active'));
+  document.getElementById('phase'+n).classList.add('active');
+  document.querySelector(`.phase-btn[data-phase="${n}"]`).classList.add('active');
+  document.getElementById('topProgress').style.width = (n/6*100)+'%';
+  window.scrollTo({top:0, behavior:'smooth'});
+  if(n === 6) renderFinal();
+}
+phaseBtns.forEach(btn => btn.addEventListener('click', () => goToPhase(parseInt(btn.dataset.phase))));
+
+/* ============================================================
+   SECTION 1 — LEARN
+============================================================ */
+function renderWordDots(){
+  const wrap = document.getElementById('wordDots');
+  wrap.innerHTML = LESSONS.map((l,i)=>{
+    let cls = 'word-dot';
+    if(i === learnIndex) cls += ' active';
+    if(lessonsDone[i]) cls += ' done';
+    return `<div class="${cls}" data-i="${i}">${i+1}</div>`;
+  }).join('');
+  wrap.querySelectorAll('.word-dot').forEach(d => {
+    d.addEventListener('click', ()=>{ learnIndex = parseInt(d.dataset.i); learnStep = 1; renderStepper(); });
+  });
+}
+
+function renderStepper(){
+  const L = LESSONS[learnIndex];
+  document.getElementById('stepImage').innerHTML = ICONS[L.svg];
+  ['tag1','tag2','tag3'].forEach((id,i)=> document.getElementById(id).classList.toggle('on', i+1 === learnStep));
+
+  let text = '', hint = '';
+  if(learnStep === 1){ text = L.s1; hint = `STEP 1 — POSSESSIVE ADJECTIVE (${L.subject} → ${L.adj})`; }
+  if(learnStep === 2){ text = L.s2; hint = 'STEP 2 — FULL SENTENCE WITH ADJECTIVE'; }
+  if(learnStep === 3){ text = L.s3; hint = 'STEP 3 — POSSESSIVE PRONOUN (NO NOUN)'; }
+
+  document.getElementById('stepText').textContent = text;
+  document.getElementById('stepHint').textContent = hint;
+  document.getElementById('stepFeedback').textContent = ' ';
+  document.getElementById('stepFeedback').className = 'feedback';
+
+  document.getElementById('speakBtn').onclick = ()=> speak(text);
+
+  document.getElementById('prevBtn').disabled = (learnIndex === 0 && learnStep === 1);
+  const nextBtn = document.getElementById('nextBtn');
+  if(learnStep < 3) nextBtn.textContent = 'Next →';
+  else if(learnIndex < LESSONS.length - 1) nextBtn.textContent = 'Next word →';
+  else nextBtn.textContent = 'Finish Learn ✓';
+
+  renderWordDots();
+  speak(text);
+}
+
+document.getElementById('nextBtn').addEventListener('click', ()=>{
+  if(learnStep < 3){ learnStep++; }
+  else {
+    lessonsDone[learnIndex] = true;
+    if(learnIndex < LESSONS.length - 1){ learnIndex++; learnStep = 1; }
+    else { goToPhase(2); return; }
+  }
+  renderStepper();
+});
+document.getElementById('prevBtn').addEventListener('click', ()=>{
+  if(learnStep > 1){ learnStep--; }
+  else if(learnIndex > 0){ learnIndex--; learnStep = 3; }
+  renderStepper();
+});
+
+/* ============================================================
+   SECTION 2 — MATCH
+============================================================ */
+function setupMatch(){
+  const adjCol = document.getElementById('matchAdj');
+  const pronCol = document.getElementById('matchPron');
+  const adjs = shuffle(MATCH_PAIRS.map(p => p.adj));
+  const prons = shuffle(MATCH_PAIRS.map(p => p.pron));
+  adjCol.innerHTML = adjs.map(a => `<div class="match-item" data-type="adj" data-val="${a}">${a}</div>`).join('');
+  pronCol.innerHTML = prons.map(p => `<div class="match-item" data-type="pron" data-val="${p}">${p}</div>`).join('');
+  matchSelected = null;
+  document.querySelectorAll('#matchAdj .match-item, #matchPron .match-item').forEach(item => {
+    item.addEventListener('click', ()=> handleMatchClick(item));
+  });
+}
+
+function handleMatchClick(item){
+  if(item.classList.contains('matched')) return;
+  if(!matchSelected){ matchSelected = item; item.classList.add('selected'); return; }
+  if(matchSelected === item){ item.classList.remove('selected'); matchSelected = null; return; }
+  if(matchSelected.dataset.type === item.dataset.type){
+    matchSelected.classList.remove('selected');
+    matchSelected = item; item.classList.add('selected');
+    return;
+  }
+  let adjVal, pronVal;
+  if(matchSelected.dataset.type === 'adj'){ adjVal = matchSelected.dataset.val; pronVal = item.dataset.val; }
+  else { adjVal = item.dataset.val; pronVal = matchSelected.dataset.val; }
+
+  const pair = MATCH_PAIRS.find(p => p.adj === adjVal && p.pron === pronVal);
+  const fb = document.getElementById('matchFeedback');
+
+  if(pair){
+    matchSelected.classList.add('matched'); matchSelected.classList.remove('selected');
+    item.classList.add('matched');
+    matchSelected = null;
+    matchCorrect++; matchDone++;
+    playDing();
+    fb.textContent = `✅ Correct! ${adjVal} → ${pronVal}`;
+    fb.className = 'feedback ok';
+    updateMatchScore();
+    if(matchDone === MATCH_PAIRS.length){
+      fb.textContent = `🏆 All pairs matched! ${matchCorrect} correct · ${matchWrong} wrong`;
+    }
+  } else {
+    item.classList.add('wrong-match'); matchSelected.classList.add('wrong-match');
+    matchWrong++;
+    playBuzz();
+    fb.textContent = `❌ Wrong pair. Try again.`;
+    fb.className = 'feedback bad';
+    updateMatchScore();
+    const a = matchSelected, b = item;
+    setTimeout(()=>{
+      a.classList.remove('wrong-match','selected');
+      b.classList.remove('wrong-match');
+      matchSelected = null;
+    }, 650);
+  }
+}
+
+function updateMatchScore(){
+  document.getElementById('matchScore').textContent = `✅ ${matchCorrect} | ❌ ${matchWrong}`;
+}
+
+/* ============================================================
+   SECTION 3 — LISTEN
+============================================================ */
+function setupListen(){ lcIndex = 0; lcCorrect = 0; lcWrong = 0; renderListen(); }
+
+function renderListen(){
+  const panel = document.getElementById('lcImages');
+  const fb = document.getElementById('lcFeedback');
+  const label = document.getElementById('lcRoundLabel');
+
+  if(lcIndex >= LISTEN_ROUNDS.length){
+    label.textContent = 'SECTION COMPLETE';
+    document.getElementById('lcSpeakBtn').style.display = 'none';
+    panel.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:20px;">
+      <div style="font-size:60px;">🎉</div>
+      <h3 style="color:var(--green);margin:8px 0;">Section complete!</h3>
+      <p style="color:var(--muted);">✅ ${lcCorrect} correct · ❌ ${lcWrong} wrong</p>
+      <button class="nav-btn" onclick="goToPhase(4)" style="margin-top:10px;">Continue to Fill →</button>
+    </div>`;
+    fb.textContent = ' '; fb.className = 'feedback';
+    return;
+  }
+
+  lcAnswered = false;
+  const R = LISTEN_ROUNDS[lcIndex];
+  label.textContent = `ROUND ${lcIndex+1} / ${LISTEN_ROUNDS.length}`;
+  document.getElementById('lcCorrect').textContent = lcCorrect;
+  document.getElementById('lcWrong').textContent = lcWrong;
+
+  const speakBtn = document.getElementById('lcSpeakBtn');
+  speakBtn.style.display = 'inline-flex';
+  speakBtn.classList.add('pulsing');
+  speakBtn.onclick = ()=> speak(R.audio);
+
+  panel.innerHTML = R.options.map((opt, i) =>
+    `<div class="lc-img-card" data-i="${i}">${ICONS[R.svg]}<div class="lc-img-label">${opt}</div></div>`
+  ).join('');
+
+  panel.querySelectorAll('.lc-img-card').forEach(card => {
+    card.addEventListener('click', ()=>{
+      if(lcAnswered) return; lcAnswered = true;
+      const chosen = parseInt(card.dataset.i);
+      const correctIdx = R.options.indexOf(R.correct);
+      if(chosen === correctIdx){
+        card.classList.add('correct');
+        lcCorrect++;
+        fb.textContent = `✅ Correct! "${R.correct}"`;
+        fb.className = 'feedback ok';
+        playDing();
+        setTimeout(()=>{ lcIndex++; renderListen(); }, 1300);
+      } else {
+        card.classList.add('wrong');
+        lcWrong++;
+        panel.querySelectorAll('.lc-img-card').forEach(c => {
+          if(parseInt(c.dataset.i) === correctIdx) c.classList.add('correct');
+        });
+        fb.textContent = `❌ The correct answer was "${R.correct}"`;
+        fb.className = 'feedback bad';
+        playBuzz();
+        setTimeout(()=>{ lcIndex++; renderListen(); }, 2000);
+      }
+      document.getElementById('lcCorrect').textContent = lcCorrect;
+      document.getElementById('lcWrong').textContent = lcWrong;
+    });
+  });
+
+  setTimeout(()=> speak(R.audio), 450);
+}
+
+/* ============================================================
+   SECTION 4 — FILL
+============================================================ */
+function setupFill(){ fbIndex = 0; fbScore = 0; fbWrong = 0; renderFill(); }
+
+function renderFill(){
+  const area = document.getElementById('fbArea');
+  document.getElementById('fbProgress').style.width = (fbIndex/FILL_BLANK.length*100)+'%';
+
+  if(fbIndex >= FILL_BLANK.length){
+    document.getElementById('fbProgress').style.width = '100%';
+    area.innerHTML = `<div class="fb-card" style="text-align:center;">
+      <div style="font-size:60px;">🎉</div>
+      <h3 style="color:var(--green);margin:8px 0;">Section complete!</h3>
+      <p style="color:var(--muted);">✅ ${fbScore} correct · ❌ ${fbWrong} wrong</p>
+      <button class="nav-btn" onclick="goToPhase(5)" style="margin-top:10px;">Continue to Reading →</button>
+    </div>`;
+    return;
+  }
+
+  const Q = FILL_BLANK[fbIndex];
+  const opts = shuffle([...Q.options]);
+  area.innerHTML = `
+    <div class="fb-card">
+      <div class="fb-top">
+        <div class="fb-num">QUESTION ${fbIndex+1} / ${FILL_BLANK.length}</div>
+        <div class="fb-score">✅ ${fbScore} | ❌ ${fbWrong}</div>
+      </div>
+      <div class="fb-sentence">
+        ${Q.before} <span class="gap">____</span> ${Q.after}
+        <span class="hint">${Q.hint}</span>
+      </div>
+      <div class="fb-choices">
+        ${opts.map(o => `<div class="fb-choice" data-val="${o}">${o}</div>`).join('')}
+      </div>
+      <div class="feedback" id="fbFeedback">&nbsp;</div>
+    </div>`;
+
+  let solved = false;
+  const fb = document.getElementById('fbFeedback');
+  document.querySelectorAll('.fb-choice').forEach(c => {
+    c.addEventListener('click', ()=>{
+      if(solved) return;
+      const val = c.dataset.val;
+      if(val === Q.answer){
+        solved = true;
+        c.classList.add('correct');
+        document.querySelectorAll('.fb-choice').forEach(cc => cc.style.pointerEvents = 'none');
+        fbScore++;
+        fb.textContent = '✅ Correct!';
+        fb.className = 'feedback ok';
+        playDing();
+        setTimeout(()=>{ fbIndex++; renderFill(); }, 1200);
+      } else {
+        c.classList.add('wrong');
+        fbWrong++;
+        fb.textContent = '❌ Try again.';
+        fb.className = 'feedback bad';
+        playBuzz();
+        setTimeout(()=> c.classList.remove('wrong'), 500);
+      }
+    });
+  });
+}
+
+/* ============================================================
+   SECTION 5 — READING
+============================================================ */
+function setupReading(){ readIndex = 0; readCorrect = 0; readWrong = 0; renderReading(); }
+
+function renderReading(){
+  const area = document.getElementById('readArea');
+
+  if(readIndex >= READING.questions.length){
+    area.innerHTML = `<div style="text-align:center;padding:20px;">
+      <div style="font-size:60px;">🎉</div>
+      <h3 style="color:var(--green);margin:8px 0;">Reading complete!</h3>
+      <p style="color:var(--muted);">✅ ${readCorrect} correct · ❌ ${readWrong} wrong</p>
+      <button class="nav-btn" onclick="goToPhase(6)" style="margin-top:10px;">See Final Score →</button>
+    </div>`;
+    return;
+  }
+
+  const q = READING.questions[readIndex];
+  area.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:6px;">
+      <span style="font-size:12px;font-weight:800;color:var(--muted);">QUESTION ${readIndex+1} / ${READING.questions.length}</span>
+      <span style="font-size:12.5px;font-weight:800;"><span style="color:var(--green);">✅ ${readCorrect}</span> · <span style="color:var(--red);">❌ ${readWrong}</span></span>
+    </div>
+    <div class="read-passage">${READING.passage}</div>
+    <div class="read-q-text">${readIndex+1}. ${q.q}</div>
+    <div class="read-opts" id="readOpts">
+      ${q.options.map((o,i)=>`<div class="read-opt" data-i="${i}">${o}</div>`).join('')}
+    </div>
+    <div class="feedback" id="readFeedback">&nbsp;</div>`;
+
+  readAnswered = false;
+  const fb = document.getElementById('readFeedback');
+  document.querySelectorAll('#readOpts .read-opt').forEach(opt => {
+    opt.addEventListener('click', ()=>{
+      if(readAnswered) return; readAnswered = true;
+      const chosen = parseInt(opt.dataset.i);
+      if(chosen === q.answer){
+        opt.classList.add('correct');
+        readCorrect++;
+        fb.textContent = '✅ Correct!';
+        fb.className = 'feedback ok';
+        playDing();
+        document.querySelectorAll('#readOpts .read-opt').forEach(o => o.classList.add('disabled'));
+        setTimeout(()=>{ readIndex++; renderReading(); }, 1300);
+      } else {
+        opt.classList.add('wrong');
+        readWrong++;
+        fb.textContent = `❌ Correct answer: ${q.options[q.answer]}`;
+        fb.className = 'feedback bad';
+        playBuzz();
+        document.querySelectorAll('#readOpts .read-opt').forEach(o => {
+          o.classList.add('disabled');
+          if(parseInt(o.dataset.i) === q.answer) o.classList.add('correct');
+        });
+        setTimeout(()=>{ readIndex++; renderReading(); }, 2000);
+      }
+    });
+  });
+}
+
+/* ============================================================
+   SECTION 6 — FINAL
+============================================================ */
+function renderFinal(){
+  const sections = [
+    { label:'Match',    correct: matchCorrect, wrong: matchWrong, max: MATCH_PAIRS.length },
+    { label:'Listen',   correct: lcCorrect,    wrong: lcWrong,    max: LISTEN_ROUNDS.length },
+    { label:'Fill',     correct: fbScore,      wrong: fbWrong,    max: FILL_BLANK.length },
+    { label:'Reading',  correct: readCorrect,  wrong: readWrong,  max: READING.questions.length }
+  ];
+  let totalCorrect = 0, totalWrong = 0;
+  sections.forEach(s => { totalCorrect += s.correct; totalWrong += s.wrong; });
+  const total = totalCorrect + totalWrong;
+  const pct = total > 0 ? Math.round(totalCorrect/total*100) : 0;
+  const passed = pct >= 80;
+
+  const message = passed
+    ? '🏆 Great job! You passed the activities. Keep practicing possessives every day!'
+    : '📚 Keep practicing. Review the grammar table and try again. You need 80% to pass.';
+
+  document.getElementById('finalArea').innerHTML = `
+    <h3>Possessive Adjectives &amp; Pronouns — Final</h3>
+    <div class="final-score-big" style="color:${passed ? 'var(--green)' : 'var(--red)'};">${pct}%</div>
+    <div class="final-score-sub">✅ ${totalCorrect} correct · ❌ ${totalWrong} wrong</div>
+    <div class="final-breakdown">
+      ${sections.map(s => {
+        const p = s.max > 0 ? Math.round(s.correct/s.max*100) : 0;
+        return `<div class="fb-row">
+          <div class="fb-label">${s.label}</div>
+          <div class="fb-bar-outer"><div class="fb-bar-inner" style="width:${p}%"></div></div>
+          <div class="fb-val">${s.correct}/${s.max}</div>
+        </div>`;
+      }).join('')}
+    </div>
+    <div class="final-message ${passed ? 'pass' : 'fail'}">${message}</div>
+    <button class="restart-btn" id="restartBtn">🔄 Restart all activities</button>`;
+  document.getElementById('restartBtn').onclick = resetAll;
+}
+
+function resetAll(){
+  learnIndex = 0; learnStep = 1; lessonsDone = new Array(LESSONS.length).fill(false);
+  matchCorrect = 0; matchWrong = 0; matchDone = 0;
+  lcIndex = 0; lcCorrect = 0; lcWrong = 0;
+  fbIndex = 0; fbScore = 0; fbWrong = 0;
+  readIndex = 0; readCorrect = 0; readWrong = 0;
+  updateMatchScore();
+  renderStepper();
+  setupMatch();
+  setupListen();
+  setupFill();
+  setupReading();
+  goToPhase(1);
+}
+
+/* INIT */
+renderStepper();
+setupMatch();
+setupListen();
+setupFill();
+setupReading();
+</script>
+</body>
+</html>
